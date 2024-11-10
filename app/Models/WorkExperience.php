@@ -17,7 +17,5 @@ class WorkExperience extends Model
         'start_date',
         'end_date',
         'company_logo',
-        'description',
-        'display_order',
     ];
 }

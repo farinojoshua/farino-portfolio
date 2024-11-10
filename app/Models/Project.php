@@ -12,22 +12,17 @@ class Project extends Model
     protected $table = 'projects';
 
     protected $fillable = [
-        'title',
+        'name',
         'slug',
-        'short_description',
         'description',
-        'thumbnail',
         'main_image',
-        'category',
+        'service',
         'client',
         'project_url',
         'github_url',
-        'completion_date',
-        'display_order',
-        'is_featured',
     ];
 
-    public function images()
+    public function projectImages()
     {
         return $this->hasMany(ProjectImage::class);
     }

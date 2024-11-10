@@ -17,6 +17,7 @@ class Profile extends Model
         'bio',
         'email',
         'phone',
+        'profile_image',
         'address',
         'profile_image',
         'years_experience',

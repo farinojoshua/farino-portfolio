@@ -14,6 +14,6 @@ class SocialMedia extends Model
     protected $fillable = [
         'platform',
         'url',
-        'icon',
+        'icon_class',
     ];
 }
