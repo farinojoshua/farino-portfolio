@@ -15,9 +15,9 @@ class ProjectController extends Controller
         return ProjectResource::collection($project);
     }
 
-    public function show(Project $project)
+    public function show(Project $project, $id)
     {
-        $project = Project::find($project->id);
-        return ProjectResource::make($project);
+        $project = Project::find($id);
+        return new ProjectResource($project);
     }
 }

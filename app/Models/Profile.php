@@ -19,7 +19,6 @@ class Profile extends Model
         'phone',
         'profile_image',
         'address',
-        'profile_image',
         'years_experience',
         'available_for_work',
     ];

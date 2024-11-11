@@ -16,14 +16,17 @@ class ProfileResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'tagline' => $this->tagline,
             'bio' => $this->bio,
             'email' => $this->email,
             'phone' => $this->phone,
-            'address' => $this->address,
             'profile_image' => $this->profile_image,
+            'address' => $this->address,
             'years_experience' => $this->years_experience,
             'available_for_work' => $this->available_for_work,
+            'projects_completed' => $this->projects_completed,
+            'happy_clients' => $this->happy_clients,
         ];
     }
 }
