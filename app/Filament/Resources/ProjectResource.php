@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
+use Filament\Forms\Components\Select;
 
 class ProjectResource extends Resource
 {
@@ -37,7 +38,16 @@ class ProjectResource extends Resource
                     ->directory('projects/main_images')
                     ->image()
                     ->required(),
-                TextInput::make('service')->maxLength(100),
+                Select::make('service')
+                    ->multiple()
+                    ->relationship('services', 'name')
+                    ->preload()
+                    ->required(),
+                Select::make('skill')
+                    ->multiple()
+                    ->relationship('skills', 'name')
+                    ->preload()
+                    ->required(),
                 TextInput::make('client')->maxLength(100),
                 TextInput::make('project_url'),
                 TextInput::make('github_url'),
@@ -62,7 +72,12 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->sortable()->searchable(),
-                TextColumn::make('service')->sortable(),
+                TextColumn::make('services')
+                ->label('Services')
+                ->formatStateUsing(function ($record) {
+                    return $record->services->pluck('name')->join(', ');
+                })
+                ->wrap(),
                 TextColumn::make('client')->sortable(),
                 ImageColumn::make('main_image')->label('Main Image'),
             ])

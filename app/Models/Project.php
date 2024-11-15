@@ -16,7 +16,6 @@ class Project extends Model
         'slug',
         'description',
         'main_image',
-        'service',
         'client',
         'project_url',
         'github_url',
@@ -25,5 +24,15 @@ class Project extends Model
     public function projectImages()
     {
         return $this->hasMany(ProjectImage::class);
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'project_service');
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'project_skill');
     }
 }
